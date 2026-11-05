@@ -1,31 +1,34 @@
-# EfficientHashing — Fabric 1.21.11
+# EfficientHashing — Fabric 26.3
 
 EfficientHashing replaces the hashing algorithm of `Vec3i` (and its subclasses
 such as `BlockPos`) with a much more collision-resistant one. It is a fork of
 [ZZZank/EfficientHashing](https://github.com/ZZZank/EfficientHashing).
 
-This branch contains the standalone **1.21.11 Fabric** build. It uses a small
-manual `javac` build instead of the upstream Stonecutter setup, and the mixin
-targets the intermediary names used by the production jar directly.
+This branch contains the **Minecraft 26.3 Fabric** port. 26.3 ships
+unobfuscated official names, so the mixin targets `net.minecraft.core.Vec3i`
+directly and no refmap is required.
 
 ## Build
 
-1. Open `build.bat` and set `MC_INSTANCE` to your Minecraft 1.21.11 Fabric
-   instance (the folder containing the version jar and a `mods` folder with
-   Fabric API).
-2. Run `build.bat`.
-3. The output jar is `efficient_hashing-1.0.2+1.21.11.jar`.
+Requires JDK 25. Loom 1.18.4 requires Gradle 9.7+, and the included wrapper
+uses Gradle 9.7.1:
 
-The build needs:
+```powershell
+.\gradlew build
+```
 
-- JDK 21+
-- Fabric Loader 0.20.1
-- Fabric API 0.141.6+1.21.11
-- Sponge Mixin 0.8.5
+Or, with a local Gradle 9.7.1 installation:
+
+```powershell
+gradle build
+```
+
+Output: `build/libs/efficient_hashing-1.0.2+26.3.jar`
 
 ## Install
 
-Put the built jar into `mods/` together with Fabric API for Minecraft 1.21.11.
+Put the built jar into `mods/`. The mod only needs Fabric Loader 0.20.1+;
+Fabric API is not required.
 
 ## License
 

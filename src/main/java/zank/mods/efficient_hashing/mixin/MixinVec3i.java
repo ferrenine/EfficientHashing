@@ -10,22 +10,22 @@ import zank.mods.efficient_hashing.PhiMix;
  * because some mods might use BlockPos as Vec3i, then two same Vec3i with the
  * same value will have different hashcode.
  *
- * <p>Production build: targets the intermediary class name directly, because
- * this jar is built without a Loom-generated refmap.</p>
+ * <p>26.3 ships unobfuscated official names, so the mixin targets
+ * {@code net.minecraft.core.Vec3i} directly and needs no refmap.</p>
  *
  * @author ZZZank
  */
-@Mixin(targets = "net.minecraft.class_2382")
+@Mixin(targets = "net.minecraft.core.Vec3i")
 public abstract class MixinVec3i {
 
     @Shadow
-    private int field_11175; // x
+    private int x;
 
     @Shadow
-    private int field_11174; // y
+    private int y;
 
     @Shadow
-    private int field_11173; // z
+    private int z;
 
     /**
      * @author ZZZank
@@ -34,6 +34,6 @@ public abstract class MixinVec3i {
     @Override
     @Overwrite
     public int hashCode() {
-        return PhiMix.mix(PhiMix.mix(this.field_11175) + this.field_11174) + this.field_11173;
+        return PhiMix.mix(PhiMix.mix(this.x) + this.y) + this.z;
     }
 }
