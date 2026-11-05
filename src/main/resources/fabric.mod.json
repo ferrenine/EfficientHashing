@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "efficient_hashing",
+  "version": "1.0.2+1.21.11",
+  "name": "Efficient Hashing",
+  "description": "Better hashing algorithm for Vec3i & BlockPos",
+  "authors": [
+    "Zank"
+  ],
+  "contact": {
+  },
+  "license": "LGPL-3.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "zank.mods.efficient_hashing.fabric.EfficientHashingMod"
+    ]
+  },
+  "mixins": [
+    "efficient_hashing.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15",
+    "minecraft": ">=1.21.11 <=1.21.11"
+  }
+}
