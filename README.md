@@ -10,16 +10,18 @@ directly and no refmap is required.
 
 ## Build
 
-Requires JDK 25. Loom 1.18.4 requires Gradle 9.7+, and the included wrapper
-uses Gradle 9.7.1:
+Requires JDK 25 to run Gradle itself (Loom 1.18.4 requires a Java 25 JVM).
+The included wrapper uses Gradle 9.7.1:
 
 ```powershell
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-25"
 .\gradlew build
 ```
 
 Or, with a local Gradle 9.7.1 installation:
 
 ```powershell
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-25"
 gradle build
 ```
 
